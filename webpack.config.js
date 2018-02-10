@@ -9,6 +9,7 @@ var extractPlugin = new ExtractTextPlugin({
 })
 
 module.exports = {
+	devtool: 'cheap-module-source-map',
 	entry: './src/scripts.js',
 	output: {
 		path: path.resolve(__dirname, 'public'),
@@ -56,5 +57,10 @@ module.exports = {
 			template: 'src/index.html'
 		}),
 		new CleanWebpackPlugin(['public'])
-	]
+	],
+	devServer: {
+		contentBase: path.join(__dirname, "public"),
+		compress: true,
+		port: 9000
+	}
 }
